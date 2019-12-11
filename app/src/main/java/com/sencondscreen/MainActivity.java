@@ -3,13 +3,16 @@ package com.sencondscreen;
 import android.Manifest;
 import android.app.ActivityOptions;
 import android.app.Presentation;
+import android.app.Service;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.content.pm.PackageManager;
 import android.hardware.display.DisplayManager;
 import android.net.Uri;
 import android.os.Build;
+import android.os.IBinder;
 import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -33,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
      * 屏幕数组
      **/
     private Display[] displays;
+    private SecondScreenService mService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,5 +109,49 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+        //绑定服务
+
+        findViewById(R.id.tv_bind_service).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                final Intent intent = new Intent(MainActivity.this, SecondScreenService.class);
+                bindService(intent, conn, Service.BIND_AUTO_CREATE);
+            }
+        });
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        try {
+            unbindService(conn);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    ServiceConnection conn = new ServiceConnection() {
+        /**
+         * 与服务器端交互的接口方法 绑定服务的时候被回调，在这个方法获取绑定Service传递过来的IBinder对象，
+         * 通过这个IBinder对象，实现宿主和Service的交互。
+         */
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            Log.e(TAG, "绑定成功调用：onServiceConnected");
+            // 获取Binder
+            SecondScreenService.DataBinder binder = (SecondScreenService.DataBinder) service;
+            mService = binder.getService();
+        }
+        /**
+         * 当取消绑定的时候被回调。但正常情况下是不被调用的，它的调用时机是当Service服务被意外销毁时，
+         * 例如内存的资源不足时这个方法才被自动调用。
+         */
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+            mService=null;
+        }
+
+    };
 }

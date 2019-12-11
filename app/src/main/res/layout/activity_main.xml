@@ -75,4 +75,17 @@
         android:visibility="gone"
         android:background="#33f1ea"
         />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="绑定服务"
+        android:layout_margin="10dp"
+        android:padding="10dp"
+        android:foreground="?attr/selectableItemBackground"
+        android:id="@+id/tv_bind_service"
+        android:gravity="center"
+        android:visibility="visible"
+        android:background="#33f1ea"
+        />
 </LinearLayout>
