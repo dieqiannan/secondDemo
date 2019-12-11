@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="屏幕数量"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="150dp"
+        android:padding="10dp"
+        android:foreground="?attr/selectableItemBackground"
+        android:id="@+id/tv_display_num"
+        android:gravity="center"
+        android:background="#33f1ea"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="设置允许悬浮窗"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:padding="10dp"
+        android:foreground="?attr/selectableItemBackground"
+        android:id="@+id/tv_request_permission"
+        android:gravity="center"
+        android:background="#33f1ea"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="打开副屏幕 Presentation"
+        android:layout_margin="10dp"
+        android:padding="10dp"
+        android:foreground="?attr/selectableItemBackground"
+        android:id="@+id/tv_way_Presentation"
+        android:gravity="center"
+        android:background="#33f1ea"
+       />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="添加数据"
+        android:layout_margin="10dp"
+        android:padding="10dp"
+        android:foreground="?attr/selectableItemBackground"
+        android:id="@+id/tv_01_add_data"
+        android:gravity="center"
+        android:background="#33f1ea"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="第二种 start"
+        android:layout_margin="10dp"
+        android:padding="10dp"
+        android:foreground="?attr/selectableItemBackground"
+        android:id="@+id/tv_way_startActivity"
+        android:gravity="center"
+        android:visibility="gone"
+        android:background="#33f1ea"
+        />
+</LinearLayout>
